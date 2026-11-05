@@ -1,0 +1,68 @@
+{
+  "01-boiler-damaged-shrapnel.json": {
+    "status": "READY_FOR_REVIEW",
+    "category": "PRODUCT_DEFECT",
+    "caseKey": "SWAN / PRODUCT_DEFECT",
+    "missingFields": []
+  },
+  "02-boiler-damaged-second-customer.json": {
+    "status": "READY_FOR_REVIEW",
+    "category": "PRODUCT_DEFECT",
+    "caseKey": "SWAN / PRODUCT_DEFECT",
+    "missingFields": []
+  },
+  "03-boiler-damaged-duplicate.json": {
+    "status": "DUPLICATE",
+    "category": "PRODUCT_DEFECT",
+    "caseKey": null,
+    "duplicateOf": "01-boiler-damaged-shrapnel.json"
+  },
+  "04-boiler-heating-time-warranty.json": {
+    "status": "READY_FOR_REVIEW",
+    "category": "FALSE_ADVERTISING",
+    "caseKey": "SWAN / FALSE_ADVERTISING",
+    "missingFields": []
+  },
+  "05-boiler-heating-time-injection.json": {
+    "status": "FLAGGED",
+    "category": "FALSE_ADVERTISING",
+    "caseKey": "SWAN / FALSE_ADVERTISING",
+    "flags": [
+      "PROMPT_INJECTION_SUSPECTED"
+    ]
+  },
+  "06-boiler-damaged-needs-info.json": {
+    "status": "NEEDS_INFO",
+    "category": "PRODUCT_DEFECT",
+    "caseKey": null,
+    "missingFields": [
+      "company",
+      "incidentDate",
+      "amountOrEvidence"
+    ]
+  },
+  "07-nova-poshta-return-refused.json": {
+    "status": "READY_FOR_REVIEW",
+    "category": "SERVICE_FAILURE",
+    "caseKey": "NOVA POSHTA / SERVICE_FAILURE",
+    "missingFields": []
+  },
+  "08-nova-poshta-return-refused-second-customer.json": {
+    "status": "READY_FOR_REVIEW",
+    "category": "SERVICE_FAILURE",
+    "caseKey": "NOVA POSHTA / SERVICE_FAILURE",
+    "missingFields": []
+  },
+  "09-samsung-washer-damaged-shrapnel.json": {
+    "status": "READY_FOR_REVIEW",
+    "category": "PRODUCT_DEFECT",
+    "caseKey": "SAMSUNG / PRODUCT_DEFECT",
+    "missingFields": []
+  },
+  "10-samsung-washer-damaged-second-customer.json": {
+    "status": "READY_FOR_REVIEW",
+    "category": "PRODUCT_DEFECT",
+    "caseKey": "SAMSUNG / PRODUCT_DEFECT",
+    "missingFields": []
+  }
+}

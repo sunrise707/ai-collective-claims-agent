@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ClaimStatus {
+  READY_FOR_REVIEW
+  NEEDS_INFO
+  DUPLICATE
+  FLAGGED
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Participant {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  claims    Claim[]
+}
+
+model Case {
+  id          String   @id @default(uuid())
+  companyKey  String
+  company     String
+  category    String
+  summary     Json?
+  summaryAt   DateTime?
+  createdAt   DateTime @default(now())
+  claims      Claim[]
+
+  @@unique([companyKey, category])
+}
+
+model Claim {
+  id                 String       @id @default(uuid())
+  participantId      String
+  participant        Participant  @relation(fields: [participantId], references: [id])
+  caseId             String?
+  case               Case?        @relation(fields: [caseId], references: [id])
+  description        String
+  documentText       String?
+  company            String?
+  category           String
+  categoryConfidence Float
+  extracted          Json
+  missingFields      String[]
+  flags              String[]
+  status             ClaimStatus
+  duplicateOfId      String?
+  reviewStatus       ReviewStatus @default(PENDING)
+  reviewNote         String?
+  joinedAt           DateTime?
+  createdAt          DateTime     @default(now())
+  runs               AgentRun[]
+}
+
+model AgentRun {
+  id         String   @id @default(uuid())
+  claimId    String?
+  claim      Claim?   @relation(fields: [claimId], references: [id])
+  trace      Json
+  outcome    Json
+  durationMs Int
+  createdAt  DateTime @default(now())
+}
